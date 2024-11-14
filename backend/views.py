@@ -42,9 +42,6 @@ def ticket_detail(request,ticket_id):
 
     return render(request, 'tickets/ticket_detail.html', {'ticket': ticket})
 
-
-
-@login_required
 def add_comment(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
     print("ticket is this:", ticket, request)
