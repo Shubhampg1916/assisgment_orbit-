@@ -44,6 +44,8 @@ def ticket_detail(request,ticket_id):
 
 from django.contrib.auth.models import User
 
+from django.contrib.auth.models import User
+
 def add_comment(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
     print("ticket is this:", ticket, request)
@@ -58,8 +60,8 @@ def add_comment(request, ticket_id):
             if request.user.is_authenticated:
                 comment.user = request.user  # Use authenticated user
             else:
-                # Retrieve or create a default "Anonymous" user
-                default_user = User.objects.get(username="AnonymousUser")
+                # Ensure the default user exists, if not, create it
+                default_user, created = User.objects.get_or_create(username="AnonymousUser")
                 comment.user = default_user
 
             comment.save()
@@ -78,6 +80,7 @@ def add_comment(request, ticket_id):
     print("4")
 
     return render(request, 'tickets/add_comment.html', {'form': form, 'ticket': ticket})
+
 
     # ticket = get_object_or_404(Ticket, id=ticket_id)
     # if request.method == 'POST':
