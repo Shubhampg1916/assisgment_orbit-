@@ -27,8 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_URL = 'create_ticket/'
-
 # Application definition
 
 INSTALLED_APPS = [
