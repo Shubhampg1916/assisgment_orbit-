@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_URL = 'list_ticket'
+LOGIN_URL = 'create_ticket/'
 
 # Application definition
 
