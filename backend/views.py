@@ -7,7 +7,7 @@ from .models import Ticket, Comment
 from .forms import TicketForm,CommentForm,UpdateStatusForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages  
-
+from django.contrib.auth.models import User
 # Create your views here.
 @login_required
 def create_ticket(request):
@@ -43,9 +43,7 @@ def ticket_detail(request,ticket_id):
     return render(request, 'tickets/ticket_detail.html', {'ticket': ticket})
 
 
-from django.contrib.auth.models import User
 
-from django.contrib.auth.models import User
 @login_required
 def add_comment(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)

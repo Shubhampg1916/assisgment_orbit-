@@ -32,6 +32,12 @@ LOGIN_REDIRECT_URL = 'list_ticket'  # Redirects after a successful login
 
 
 # Application definition
+# settings.py
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Uses the default database-backed session engine
+# settings.py
+SESSION_COOKIE_SECURE = True  # Ensures cookies are sent over HTTPS
+# settings.py
+CSRF_COOKIE_SECURE = True  # Ensure CSRF cookie is only sent over HTTPS
 
 INSTALLED_APPS = [
     'django.contrib.admin',
