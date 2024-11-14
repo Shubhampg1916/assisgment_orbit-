@@ -52,7 +52,12 @@ def add_comment(request, ticket_id):
             print("2")
             comment = form.save(commit=False)
             comment.ticket = ticket
-            comment.user = request.user  # Assuming the user is authenticated
+
+            if request.user.is_authenticated:
+                comment.user = request.user  # Use authenticated user
+            else:
+                comment.user = None  # Or set to a default user if needed
+
             comment.save()
 
             # Add success message
