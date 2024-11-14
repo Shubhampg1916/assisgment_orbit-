@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages  
 
 # Create your views here.
+@login_required
 def create_ticket(request):
     if request.method == 'POST':
         form = TicketForm(request.POST)
@@ -45,7 +46,7 @@ def ticket_detail(request,ticket_id):
 from django.contrib.auth.models import User
 
 from django.contrib.auth.models import User
-
+@login_required
 def add_comment(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
     print("ticket is this:", ticket, request)

@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+LOGIN_URL = 'login'  # Redirects unauthenticated users to login
+LOGIN_REDIRECT_URL = 'list_ticket'  # Redirects after a successful login
+
+
 # Application definition
 
 INSTALLED_APPS = [
