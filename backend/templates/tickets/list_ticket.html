@@ -3,6 +3,18 @@
 {% block content %}
 <h2>List of Tickets</h2>
 
+<!-- Filter form for selecting ticket status -->
+<form method="get" action="{% url 'list_ticket' %}">
+  <label for="status">Filter by Status:</label>
+  <select name="status" id="status">
+    <option value="">All</option>
+    <option value="Open" {% if request.GET.status == 'Open' %}selected{% endif %}>Open</option>
+    <option value="In Progress" {% if request.GET.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+    <option value="Closed" {% if request.GET.status == 'Closed' %}selected{% endif %}>Closed</option>
+  </select>
+  <button type="submit">Apply Filter</button>
+</form>
+
 <table border="1">
     <tr>
       <th>Title</th>
@@ -14,11 +26,12 @@
       <td><a href="{% url 'ticket_detail' ticket.id %}">{{ ticket.title }}</a></td>
       <td>{{ ticket.status }}</td>
       <td>{{ ticket.Name_of_creator }}</td>
-
     </tr>
     {% endfor %}
 </table>
-<style>table {
+
+<style>
+  table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
@@ -49,4 +62,5 @@
     text-decoration: underline;
   }
 </style>
+
 {% endblock %}

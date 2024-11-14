@@ -23,8 +23,15 @@ def create_ticket(request):
     return render(request, 'tickets/create_ticket.html', {'form': form})
 
 def list_ticket(request):
-    tickets = Ticket.objects.all()
+    status_filter = request.GET.get('status', '')
+    
+    if status_filter:
+        tickets = Ticket.objects.filter(status=status_filter)
+    else:
+        tickets = Ticket.objects.all()
+
     return render(request, 'tickets/list_ticket.html', {'tickets': tickets})
+    #return render(request, 'tickets/list_ticket.html', {'tickets': tickets})
 
 def ticket_detail(request,ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
