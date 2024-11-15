@@ -1,33 +1,33 @@
 {% extends 'tickets/base.html' %}
 
 {% block content %}
-<h2>List of Tickets</h2>
+<h2>List of Tickets <span style="font-size: small;">(Click on ticket titles for ticket details...)</span></h2>
 
 <!-- Filter form for selecting ticket status -->
-<form method="get" action="{% url 'list_ticket' %}">
-  <label for="status">Filter by Status:</label>
-  <select name="status" id="status">
+<form method="get" action="{% url 'list_ticket' %}" style="display: flex; align-items: center; gap: 5px;">
+  <label for="status" style="margin-right: 5px;">Filter by Status:</label>
+  <select name="status" id="status" style="width: auto; padding: 5px;">
     <option value="">All</option>
     <option value="Open" {% if request.GET.status == 'Open' %}selected{% endif %}>Open</option>
     <option value="In Progress" {% if request.GET.status == 'In Progress' %}selected{% endif %}>In Progress</option>
     <option value="Closed" {% if request.GET.status == 'Closed' %}selected{% endif %}>Closed</option>
   </select>
-  <button type="submit">Apply Filter</button>
+  <button type="submit" style="padding: 5px 10px;">Apply Filter</button>
 </form>
 
 <table border="1">
-    <tr>
-      <th>Title</th>
-      <th>Status</th>
-      <th>Creator</th>
-    </tr>
-    {% for ticket in tickets %}
-    <tr>
-      <td><a href="{% url 'ticket_detail' ticket.id %}">{{ ticket.title }}</a></td>
-      <td>{{ ticket.status }}</td>
-      <td>{{ ticket.Name_of_creator }}</td>
-    </tr>
-    {% endfor %}
+  <tr>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Creator</th>
+  </tr>
+  {% for ticket in tickets %}
+  <tr>
+    <td><a href="{% url 'ticket_detail' ticket.id %}" style="color: blue;">{{ ticket.title }}</a></td>
+    <td>{{ ticket.status }}</td>
+    <td>{{ ticket.Name_of_creator }}</td>
+  </tr>
+  {% endfor %}
 </table>
 
 <style>
@@ -38,26 +38,26 @@
     font-size: 16px;
     text-align: left;
   }
-  
+
   th, td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
   }
-  
+
   th {
-    background-color: #4CAF50;
+    background-color: #094561;
     color: white;
   }
-  
+
   tr:hover {
     background-color: #f5f5f5;
   }
-  
+
   a {
-    color: #4CAF50;
+    color: #032758;
     text-decoration: none;
   }
-  
+
   a:hover {
     text-decoration: underline;
   }

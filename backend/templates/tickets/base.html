@@ -16,7 +16,7 @@
         header {
             background-color: #2c3e50;
             color: white;
-            padding: 10px 0;
+            padding: 15px 0;
             text-align: left;
         }
         header h1 {
@@ -68,7 +68,7 @@
             background-color: #2c3e50;
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 1px;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -91,23 +91,33 @@
                 <li><a href="{% url 'list_ticket' %}" style="color: rgb(230, 230, 238);">List Ticket</a></li>
             </ul>
         </nav>
-        <!-- <style>
+
+        <style>
             .nav-list {
                 list-style-type: none; /* Remove default bullet points */
-                display: flex; /* Use flexbox to align items horizontally */
-                gap: 1500px; /* Add space between items */
+                display: flex; /* Align items horizontally */
+                gap: 50px; /* Add space between items */
+                margin: 0;
+                padding: 0;
+                padding: 10px;
             }
-
+        
             .nav-list li {
-                display: inline; /* Inline styling for list items */
+                display: inline; /* Keep items inline */
             }
-
+        
             .nav-list a {
-                text-decoration: none; /* Remove underline from links */
+                text-decoration: none; /* Remove underline */
                 color: rgb(230, 230, 238); /* Set link color */
-                font-weight: bold; /* Optional: make text bold */
+                font-weight: bold;
             }
-        </style> -->
+        
+            .nav-list a:hover {
+                color: #ffffff; /* Optional: Change color on hover */
+            }
+        </style>
+        
+
     </header>
 
     <main>
@@ -117,7 +127,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Ticketing System. All rights reserved.</p>
+        <p>&copy; 2024 Ticketing System.</p>
     </footer>
 
     {% block extra_js %}{% endblock %}
